@@ -25,7 +25,8 @@ train = optimizer.minimize(cost)
 # Launch the graph in a session.
 sess = tf.Session()
 # Initializes global variables in the graph.
-sess.run(tf.global_variables_initializer())
+sess.run(tf.global_variables_initializer()) #for above tensorflow version 1.0
+#sess.run(tf.initialize_all_variables()) #for bellow tensorflow version 1.0
 
 # Fit the line
 for step in range(2001):
