@@ -25,7 +25,7 @@ sess.run(tf.global_variables_initializer())
 #Fit the line
 for step in range(2001):
 	sess.run(train)
-	if step%20=0
+	if step%20==0
 		print(step, sess.run(cost), sess.run(W), sess.run(b))
 
 
