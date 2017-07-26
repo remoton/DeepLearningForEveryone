@@ -1,23 +1,8 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
+tf.set_random_seed(777) # for reproducibility
 
-# observation data -> linear relation
-X=[1,2,3]
-Y=[1,2,3]
-
-W=tf.placeholder(tf.float32)
-
-# our hypothesis for linear model -> X * W
-hypothesis = X*W
-
-# cost/loss function
-cost = tf.reduce_mean(tf.square(hypothesis-Y))
-
-# Lauch the graph in a Session
-sess=tf.Session()import tensorflow as tf
-import matplotlib.pyplot as plt
-
-# observation data -> linear relation
+# observation data -> It seems to be linear relation
 X=[1,2,3]
 Y=[1,2,3]
 
@@ -32,20 +17,19 @@ cost = tf.reduce_mean(tf.square(hypothesis-Y))
 # Lauch the graph in a Session
 sess=tf.Session()
 
-# Initiallize global variables in the graph
-sess.run(tf.global_variables_initializer())
-
 # variables for plotting cost function
-W_val=[]
-cost_val=[]
+W_history=[]
+cost_history=[]
+
+# Initiallize global variables in the graph
+# sess.run(tf.global_variables_initializer())
 
 for i in range(-30,50):
-	feed_W=i*0.1
-	curr_cost, curr_W=sess.run([cost, W], feed_dict{W: feed_W})
-	
-	W_val.append(curr_W)
-	cost_val.append(curr_cost)
+	curr_W = i*0.1
+	curr_cost = sess.run(cost, feed_dict={W: curr_W})
+	W_history.append(curr_W)
+	cost_history.append(curr_cost)
 	
 # Show the cost function
-plt.plot(W_val,cost_val)
+plt.plot(W_history,cost_history)
 plt.show()
